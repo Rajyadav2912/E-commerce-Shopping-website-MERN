@@ -5,16 +5,16 @@ import "./Popular.css";
 
 const Popular = () => {
   return (
-    <div className="popular flex flex-col items-center gap-[10px] h-[90vh] mt-4">
-      <h1 className="text-[#171717] text-[50px] font-semibold uppercase">
+    <div className="flex flex-col items-center gap-[10px] h-[85vh] my-14">
+      <h1 className=" flex flex-col items-center text-[#171717] text-[50px] font-semibold uppercase">
         Popular in women
+        <hr className="w-[200px] h-[6px] rounded-[10px] bg-[#252525] " />
       </h1>
-      {/* <hr className="w-[200px] h-[6px] rounded-[10px] bg-[#252525] " /> */}
       <div className="flex mt-[30px] gap-[30px]">
         {data_Product.map((item, index) => {
           return (
             <Item
-              index={index}
+              key={index}
               id={item.id}
               name={item.name}
               image={item.image}

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState([]);
 
   return (
-    <div className="fixed bg-white w-screen mx-auto flex justify-around p-3 shadow-2xl">
+    <div className="fixed bg-white w-screen mx-auto flex justify-around p-3 shadow-2xl z-50">
       <div className="flex items-center gap-2">
         <img src={logo} alt="logo" className="w-14" />
         <p className="text-[35px] font-semibold">SHOPPER</p>
