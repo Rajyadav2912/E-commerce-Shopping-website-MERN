@@ -9,26 +9,40 @@ const Hero = () => {
     // hero
     <div className="h-screen bg-[#fde1ff] flex pt-24">
       {/* hero left*/}
-      <div className="flex-1 flex flex-col justify-center gap-5 pl-[180px] leading-[1.1]">
-        <h2 className="text-[26px] font-semibold">NEW ARRIVALS ONLY</h2>
+      <div className="flex-1 flex flex-col justify-center gap-5 xl:pl-[180px] lg:pl-[100px] md:pl-[70px] pl-[30px] leading-[1.1]">
+        <h2 className="xl:text-[26px] sm:text-[22px] text-[28px] font-semibold">
+          NEW ARRIVALS ONLY
+        </h2>
         <div>
           {/* hand icon */}
           <div className="hand-hand-icon flex items-center gap-5">
-            <p className="text-[80px] font-bold">new</p>
-            <img src={hand_icon} alt="icon" className="w-[105px]" />
+            <p className="xl:text-[80px] sm:text-[60px] text-[80px] font-bold">
+              new
+            </p>
+            <img
+              src={hand_icon}
+              alt="icon"
+              className="xl:w-[105px] w-[80px] "
+            />
           </div>
-          <p className="text-[80px] font-bold">collection</p>
-          <p className="text-[80px] font-bold">for everyone</p>
+          <p className="xl:text-[80px] sm:text-[60px] text-[80px] font-bold">
+            collection
+          </p>
+          <p className="xl:text-[80px] text-[60px] font-bold">for everyone</p>
         </div>
 
         {/* hand lastest */}
-        <div className="flex items-center gap-4 pl-7 w-[255px] h-[60px] mt-4 rounded-[75px] bg-[#ff4141] text-[18px] text-white font-medium">
+        <div className="flex items-center xl:gap-4 gap-2 pl-7 xl:w-[255px] w-[250px] h-[60px] xl:mt-4 mt-5 rounded-[75px] bg-[#ff4141] text-[18px] text-white font-medium">
           <p>Latest Collection</p>
           <img src={arrow_icon} alt="icon" />
         </div>
       </div>
       <div className="flex-1 flex items-center justify-center">
-        <img src={hero_img} alt="hero-img" className="w-[80%]" />
+        <img
+          src={hero_img}
+          alt="hero-img"
+          className="xl:w-[80%] lg:w-[90%] sm:w-[95%] w-0"
+        />
       </div>
     </div>
   );
