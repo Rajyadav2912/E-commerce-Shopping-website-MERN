@@ -13,7 +13,7 @@ import LoginSignup from "./Pages/LoginSignup";
 
 const App = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="relative">
         <Navbar />
       </div>

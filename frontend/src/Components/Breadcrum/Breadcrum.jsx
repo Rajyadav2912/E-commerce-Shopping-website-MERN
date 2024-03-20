@@ -5,7 +5,7 @@ import arrow_icon from "../Assets/breadcrum_arrow.png";
 const Breadcrum = ({ product }) => {
   return (
     // flex items-center
-    <div className="">
+    <div className="flex items-center ml-[170px] mb-3 gap-2">
       HOME <img src={arrow_icon} alt="icon" />
       SHOP <img src={arrow_icon} alt="icon" />
       {product.category} <img src={arrow_icon} alt="icon" />

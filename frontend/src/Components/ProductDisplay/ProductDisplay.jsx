@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
+import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = ({ product }) => {
+  const { addToCart } = useContext(ShopContext);
+
   return (
     <div className="flex my-0 mx-[170px]">
       <div className="flex gap-[17px]">
@@ -27,10 +30,10 @@ const ProductDisplay = ({ product }) => {
           <p>(122)</p>
         </div>
         <div className="flex gap-[15px] my-[40px] mx-0 text-[24px] font-bold">
-          <div className="text-[#4eff4e]">${product.new_price}</div>
           <div className="text-[#8c8c8c] line-through">
             ${product.old_price}
           </div>
+          <div className="text-[#ff4e4e]">${product.new_price}</div>
         </div>
         <div>
           A lightweight, usually knitted, pullover shirt, close-fitting and with
@@ -47,7 +50,12 @@ const ProductDisplay = ({ product }) => {
             <option value="XXL">XXL-Ultra large</option>
           </select>
         </div>
-        <button className="py-4 px-8 w-[200px] text-[16px] font-semibold text-[#fff] bg-[#FF4141] my-[20px] rounded-xl border-none outline-none">
+        <button
+          onClick={() => {
+            addToCart(product.id);
+          }}
+          className="py-4 px-8 w-[200px] text-[16px] font-semibold text-[#fff] bg-[#FF4141] my-[20px] rounded-xl border-none outline-none"
+        >
           ADD TO CART
         </button>
         <p className="mt-[10px]">

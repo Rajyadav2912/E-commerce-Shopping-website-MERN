@@ -5,9 +5,9 @@ import Item from "../Item/Item";
 const RelatedProducts = () => {
   return (
     <div className="flex flex-col items-center gap-3 h-[90vh]">
-      <h1 className="text-[#171717] text-[50px] font-semibold">
-        Telated Products
-        <hr className="w-[200px] h-[6px] mx-auto rounded-xl bg-[#252525]" />
+      <h1 className=" flex flex-col items-center text-[#171717] text-[50px] font-semibold uppercase">
+        Related Products
+        <hr className="w-[200px] h-[6px] rounded-[10px] bg-[#252525] " />
       </h1>
       <div className="flex mt-[30px] gap-[30px]">
         {data_product.map((item, index) => {
