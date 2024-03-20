@@ -19,7 +19,7 @@ const Offers = () => {
         </button>
       </div>
       <div className="flex-1 flex items-center justify-end">
-        <img src={exclusive_img} alt="img" className="w-[319px] object-cover" />
+        <img src={exclusive_img} alt="img" className="xl:w-[319px] w-[370px]" />
       </div>
     </div>
   );
