@@ -18,10 +18,12 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="nav-logo">
-        <img src={logo} alt="logo" />
-        <p>SHOPPER</p>
-      </div>
+      <Link to="/">
+        <div className="nav-logo">
+          <img src={logo} alt="logo" />
+          <p>SHOPPER</p>
+        </div>
+      </Link>
       <IoIosArrowDropup onClick={menuIcon_toggle} className="menu-icon" />
       <ul ref={menuRef} className="nav-menu">
         <li onClick={() => setMenu("shop")}>

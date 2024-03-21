@@ -9,7 +9,7 @@ const ProductDisplay = ({ product }) => {
   return (
     <div className="flex lg:flex-row flex-col my-0 xl:mx-[170px] lg:mx-[70px] md:mx-[100px] mx-[70px] gap-8">
       <div className="flex sm:flex-row flex-col-reverse gap-[17px]">
-        <div className="flex justify-between sm:flex-col flex-row sm:gap-4 gap-2 border border-black">
+        <div className="flex justify-between sm:flex-col flex-row sm:gap-4 gap-2">
           <img
             src={product.image}
             alt="img"
@@ -35,7 +35,7 @@ const ProductDisplay = ({ product }) => {
           <img
             src={product.image}
             alt="img"
-            className="lg:w-[850px] w-[800px] lg:h-[700px] h-[640px] border border-black"
+            className="lg:w-[850px] w-[800px] lg:h-[700px] h-[640px]"
           />
         </div>
       </div>
@@ -61,7 +61,7 @@ const ProductDisplay = ({ product }) => {
           garment.
         </div>
         <div className="mt-[40px] text-[#656565] text-[18px] font-semibold">
-          <select className="border border-black rounded-lg px-1">
+          <select className=" rounded-lg px-1">
             <option>Select Size</option>
             <option value="S">S-Small</option>
             <option value="M">M-Medium</option>
