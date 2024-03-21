@@ -25,10 +25,14 @@ const Hero = () => {
               className="xl:w-[105px] w-[80px] "
             />
           </div>
-          <p className="xl:text-[80px] sm:text-[60px] text-[80px] font-bold">
+          <p className="xl:text-[80px] sm:text-[60px] text-[70px] font-bold">
+            {/* text-70px */}
             collection
           </p>
-          <p className="xl:text-[80px] text-[60px] font-bold">for everyone</p>
+          <p className="xl:text-[80px] sm:text-[60px] text-[54px] font-bold">
+            for everyone
+          </p>
+          {/* text-54px */}
         </div>
 
         {/* hand lastest */}

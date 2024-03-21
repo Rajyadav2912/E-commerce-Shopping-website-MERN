@@ -9,7 +9,7 @@ const NewCollection = () => {
         NEW Collections
         <hr className="w-[200px] h-[6px] rounded-[10px] bg-[#252525] " />
       </h1>
-      <div className="grid grid-cols-4 mt-[30px] gap-[30px]">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 mt-[30px] gap-[30px]">
         {/* <div className="w-[90%] grid grid-cols-4 mt-[30px] gap-[40px]"> */}
         {new_collection.map((item, index) => (
           <Item
