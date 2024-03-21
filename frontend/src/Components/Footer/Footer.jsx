@@ -3,6 +3,7 @@ import footer_logo from "../Assets/logo_big.png";
 import instagram_icon from "../Assets/instagram_icon.png";
 import pintester_icon from "../Assets/pintester_icon.png";
 import whatsapp_icon from "../Assets/whatsapp_icon.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,12 +13,22 @@ const Footer = () => {
         <p className="text-[#383838]  text-[46px] font-bold">SHOPPER</p>
       </div>
 
-      <ul className="flex list-none gap-12 text-[#252525] text-[20px] cursor-pointer">
-        <li>Company</li>
-        <li>Product</li>
-        <li>Offices</li>
-        <li>About</li>
-        <li>Contact</li>
+      <ul className="flex sm:flex-row flex-col sm:text-start text-center list-none gap-12 text-[#252525] text-[20px] cursor-pointer">
+        <li>
+          <Link to="/">Company</Link>
+        </li>
+        <li>
+          <Link to="/">Product</Link>
+        </li>
+        <li>
+          <Link to="/">Offices</Link>
+        </li>
+        <li>
+          <Link to="/">About</Link>
+        </li>
+        <li>
+          <Link to="/">Contact</Link>
+        </li>
       </ul>
 
       <div className="flex gap-5">

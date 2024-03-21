@@ -7,7 +7,7 @@ const CartItems = () => {
     useContext(ShopContext);
 
   return (
-    <div className="my-[50px] mx-[170px]">
+    <div className="my-[50px] xl:mx-[170px] mx-[100px]">
       <div className="flex w-full items-center gap-16 py-5 px-0 text-[#454545] text-[18px] font-semibold">
         <p className="w-[10%]">Product</p>
         <p className="w-[35%]">Title</p>
@@ -47,8 +47,8 @@ const CartItems = () => {
         return null;
       })}
 
-      <div className="flex my-[100px] mx-0">
-        <div className="flex-1 flex flex-col mr-[200px] gap-10">
+      <div className="flex lg:flex-row md:flex-col my-[100px] mx-0 md:gap-7">
+        <div className="flex-1 flex flex-col xl:mr-[200px] mr-[120px] gap-10">
           <h1 className="text-[30px] font-semibold">Cart Totals</h1>
           <div>
             <div className="flex justify-between py-[15px] px-0">
@@ -72,13 +72,13 @@ const CartItems = () => {
         </div>
         <div className="flex-1 text-[16px] font-medium">
           <p className="text-[#555]">If you have a promo code, Enter it here</p>
-          <div className="w-[500px] mt-[15px] pl-[20px] h-[50px] bg-[#eaeaea]">
+          <div className="lg:w-[500px] w-[680px] mt-[15px] xl:pl-[20px] pl-3 h-[50px] bg-[#eaeaea]">
             <input
               type="text"
               placeholder="Enter promo code"
-              className="border-none bg-transparent text-[15px] w-[330px] h-[48px] outline-none"
+              className="border-none bg-transparent text-[15px] lg:w-[330px] w-[500px] h-[48px] outline-none"
             />
-            <button className="w-[150px] h-[48px] text-[16px] bg-black text-white rounded-xl">
+            <button className="lg:w-[150px] w-[165px] h-[48px] text-[16px] bg-black text-white rounded-xl">
               Submit
             </button>
           </div>

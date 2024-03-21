@@ -4,12 +4,12 @@ import Item from "../Item/Item";
 
 const RelatedProducts = () => {
   return (
-    <div className="flex flex-col items-center gap-3 h-[90vh]">
-      <h1 className=" flex flex-col items-center text-[#171717] text-[50px] font-semibold uppercase">
+    <div className="flex flex-col items-center sm:mx-0 mx-auto gap-[10px] h-full my-14">
+      <h1 className=" flex flex-col items-center text-center text-[#171717] xl:text-[50px] sm:text-[50px] text-[35px] font-semibold uppercase">
         Related Products
-        <hr className="w-[200px] h-[6px] rounded-[10px] bg-[#252525] " />
+        <hr className="sm:w-[200px] w-[280px] sm:h-[6px] h-[4px] rounded-[10px] bg-[#252525] " />
       </h1>
-      <div className="flex mt-[30px] gap-[30px]">
+      <div className="w-full h-full flex lg:flex-row flex-wrap items-center justify-center my-[30px] lg:gap-[30px] gap-[20px]">
         {data_product.map((item, index) => {
           return (
             <Item

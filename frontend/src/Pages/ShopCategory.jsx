@@ -17,7 +17,7 @@ const ShopCategory = ({ banner, category }) => {
           Sort by <img src={dropdown_icon} alt="" className="w-[15px] h-2" />
         </div>
       </div>
-      <div className="my-[20px] grid grid-cols-4 gap-x-3 gap-12">
+      <div className="my-[20px] h-full grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center md:gap-x-3 gap-x-5 gap-12">
         {all_product.map((item, index) => {
           if (category === item.category) {
             return (

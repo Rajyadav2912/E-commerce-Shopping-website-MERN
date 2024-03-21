@@ -7,19 +7,39 @@ const ProductDisplay = ({ product }) => {
   const { addToCart } = useContext(ShopContext);
 
   return (
-    <div className="flex my-0 mx-[170px]">
-      <div className="flex gap-[17px]">
-        <div className="flex flex-col gap-4">
-          <img src={product.image} alt="img" className="w-[200px] h-[163px]" />
-          <img src={product.image} alt="img" className="w-[200px] h-[163px]" />
-          <img src={product.image} alt="img" className="w-[200px] h-[163px]" />
-          <img src={product.image} alt="img" className="w-[200px] h-[163px]" />
+    <div className="flex lg:flex-row flex-col my-0 xl:mx-[170px] lg:mx-[70px] md:mx-[100px] mx-[70px] gap-8">
+      <div className="flex sm:flex-row flex-col-reverse gap-[17px]">
+        <div className="flex justify-between sm:flex-col flex-row sm:gap-4 gap-2 border border-black">
+          <img
+            src={product.image}
+            alt="img"
+            className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+          />
+          <img
+            src={product.image}
+            alt="img"
+            className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+          />
+          <img
+            src={product.image}
+            alt="img"
+            className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+          />
+          <img
+            src={product.image}
+            alt="img"
+            className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+          />
         </div>
         <div>
-          <img src={product.image} alt="img" className="w-[850px] h-[700px]" />
+          <img
+            src={product.image}
+            alt="img"
+            className="lg:w-[850px] w-[800px] lg:h-[700px] h-[640px] border border-black"
+          />
         </div>
       </div>
-      <div className="my-0 mx-[70px] flex flex-col">
+      <div className="my-0 lg:mx-[70px] mx-0 flex flex-col">
         <h1 className="text-[#3d3d3d] text-[35px] font-bold">{product.name}</h1>
         <div className="flex items-center mt-[13px] gap-1 text-[#1c1c1c] text-[16px]">
           <img src={star_icon} alt="star" />

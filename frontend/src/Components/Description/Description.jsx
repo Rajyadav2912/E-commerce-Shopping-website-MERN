@@ -2,7 +2,7 @@ import React from "react";
 
 const Description = () => {
   return (
-    <div className="my-[120px] mx-[170px]">
+    <div className="lg:my-[120px] md:my-[90px] my-[70px] lg:mx-[170px] md:mx-[100px] sm:mx-[70px] mx-[60px]">
       <div className="flex gap-5">
         <div className="flex items-center justify-center text-[16px] font-semibold w-[171px] h-[60px] border border-[#aaa9a9] ">
           Description
@@ -11,7 +11,7 @@ const Description = () => {
           Reviews (122)
         </div>
       </div>
-      <div className="flex flex-col gap-[25px] border border-[#D0D0D0] p-[48px] pb-[70px] mt-3">
+      <div className="flex flex-col gap-[25px] border border-[#D0D0D0] sm:p-[48px] p-[25px] pb-[70px] mt-3 text-justify">
         <p>
           An e-commerce website is an oline platform that faclitates the buying
           and selling of products or services over the internet. It serves as a
