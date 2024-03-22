@@ -7,8 +7,8 @@ const CartItems = () => {
     useContext(ShopContext);
 
   return (
-    <div className="my-[50px] xl:mx-[170px] mx-[100px]">
-      <div className="flex w-full items-center gap-16 py-5 px-0 text-[#454545] text-[18px] font-semibold">
+    <div className="xl:my-[50px] md:mt-8 sm:mt-4 mt-2 xl:mx-[170px] lg:mx-[100px] md:mx-[80px] sm:mx-[60px] mx-[50px]">
+      <div className="flex w-full lg:overflow-x-hidden overflow-x-scroll items-center :lg:gap-16 gap-12 py-5 px-0 text-[#454545] text-[18px] font-semibold">
         <p className="w-[10%]">Product</p>
         <p className="w-[35%]">Title</p>
         <p className="w-[10%]">Price</p>
@@ -21,9 +21,13 @@ const CartItems = () => {
         if (cartItems[e.id] > 0) {
           return (
             <div>
-              <div className="flex w-full items-center gap-16 py-5 text-[#454545] text-[17px] font-medium">
-                <div className="w-[8.5%]">
-                  <img src={e.image} alt="img" className="h-[62px]" />
+              <div className="flex w-full lg:overflow-x-hidden overflow-x-scroll items-center lg:gap-16 md:gap-12 sm:gap-4 gap-2 py-5 text-[#454545] md:text-[17px] sm:text-[14px] text-[12px] font-medium">
+                <div className="md:w-[8.5%] w-[10%]">
+                  <img
+                    src={e.image}
+                    alt="img"
+                    className="md:h-[62px] h-[65px]"
+                  />
                 </div>
                 <p className="w-[30%] ">{e.name}</p>
                 <p className="w-[5%] ml-2 ">${e.new_price}</p>
