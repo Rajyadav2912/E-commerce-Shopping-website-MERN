@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const LoginSignup = () => {
   return (
-    <div className="w-full h-screen bg-[#fce3fe] pt-[150px]">
-      <div className="w-[580px] h-[500px] bg-white m-auto py-[40px] px-[60px] rounded-3xl">
+    <div className="w-full h-screen bg-[#fce3fe] xl:pt-[150px] pt-[160px]">
+      <div className="lg:w-[580px] md:w-[520px] sm:w-[450px] w-[350px] h-[500px] bg-white m-auto py-[40px] lg:px-[60px] md:px-[50px] sm:px-[40px] px-[30px] rounded-3xl">
         <h1 className="text-center text-[30px] font-semibold">Sign Up</h1>
         <div className="flex flex-col gap-[29px] mt-[30px]">
           <input
