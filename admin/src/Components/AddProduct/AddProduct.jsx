@@ -41,8 +41,9 @@ const AddProduct = () => {
       });
 
     if (responseData.success) {
-      product.image = responseData.image_url;
+      product.image = responseData.image;
       console.log(product);
+
       await fetch("http://localhost:4000/addproduct", {
         method: "POST",
         headers: {
@@ -61,7 +62,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="box-border w-full max-w-[800px] py-8 px-12 my-1 mx-8 rounded-md bg-[#dad7d7]">
+    <div className="box-border w-full h-[75vh] max-w-[800px] py-8 px-12 my-1 mx-8 rounded-md bg-[#dad7d7]">
       <div className="w-full text-[#4a4a4a] text-[16px]">
         <p>Product title</p>
         <input
