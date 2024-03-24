@@ -142,6 +142,61 @@ app.get("/api/allproducts", async (req, res) => {
   res.send(products);
 });
 
+// Schema Creation for User model
+const Users = mongoose.model("Users", {
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  cartData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+// Creation Ending Point for regiteration the user
+app.post("/signup", async (req, res) => {
+  let check = await Users.findOne({ email: req.body.email });
+
+  if (check) {
+    return res.status(400).json({
+      success: false,
+      errors: "existing user found with same email address",
+    });
+  }
+
+  let cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0;
+  }
+
+  const user = new Users({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    cartData: cart,
+  });
+
+  await user.save();
+
+  // this  start 
+
+  // const data ={
+  //   user:
+  // }
+});
+
 app.listen(PORT, (error) => {
   if (!error) {
     console.log("Server is running on port" + PORT);

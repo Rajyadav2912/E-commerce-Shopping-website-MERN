@@ -62,7 +62,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="box-border w-full h-[75vh] max-w-[800px] py-8 px-12 my-1 mx-8 rounded-md bg-[#dad7d7]">
+    <div className="box-border w-full h-[75vh] lg:max-w-[800px] md:max-w-[760px] sm:max-w-[630px] max-w-[480px] py-8 lg:px-12 md:px-10 px-8 my-1 lg:rounded-md rounded-xl bg-[#dad7d7] lg:mx-8 mx-auto">
       <div className="w-full text-[#4a4a4a] text-[16px]">
         <p>Product title</p>
         <input
@@ -74,7 +74,7 @@ const AddProduct = () => {
           className="box-border w-full h-12 rounded-md px-4 border border-[#c3c3c3] outline-none text-[#7b7b7b] text-[14px]"
         />
       </div>
-      <div className="flex gap-10">
+      <div className="flex lg:flex-row flex-col lg:gap-10 gap-4">
         <div className="w-full text-[#4a4a4a] text-[16px]">
           <p>Price</p>
           <input
@@ -116,10 +116,15 @@ const AddProduct = () => {
           <img
             src={image ? URL.createObjectURL(image) : upload_area}
             alt="img"
-            className="h-[120px] w-[120px] rounded-lg object-contain my-3 mx-0"
+            className="h-[120px] w-[90px] rounded-lg object-contain my-3 mx-0"
           />
         </label>
-        <input onChange={imageHandler} type="file" name="image" id="" />
+        <input
+          onChange={imageHandler}
+          type="file"
+          name="image"
+          id="file-input"
+        />
       </div>
       <button
         onClick={() => {
