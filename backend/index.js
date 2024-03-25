@@ -146,15 +146,13 @@ app.get("/api/allproducts", async (req, res) => {
 const Users = mongoose.model("Users", {
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
+    unique: true,
   },
   password: {
     type: String,
-    required: true,
   },
   cartData: {
     type: Object,
@@ -169,6 +167,7 @@ const Users = mongoose.model("Users", {
 app.post("/signup", async (req, res) => {
   let check = await Users.findOne({ email: req.body.email });
 
+  // when we will not create abc@gmail.com they throw will error
   if (check) {
     return res.status(400).json({
       success: false,
@@ -190,11 +189,48 @@ app.post("/signup", async (req, res) => {
 
   await user.save();
 
-  // this  start 
+  const data = {
+    user: {
+      id: user.id,
+    },
+  };
 
-  // const data ={
-  //   user:
-  // }
+  const token = jwt.sign(data, "secret_ecom");
+  res.json({ success: true, token });
+});
+
+// creating a endpoint for user login
+app.post("/login", async (req, res) => {
+  let user = await Users.findOne({ email: req.body.email });
+
+  // when we have user email id then we need to check if user emailId and password is correct or not
+  if (user) {
+    const passCompare = req.body.password === user.password;
+    // if correct then genreated Json Web Token
+    if (passCompare) {
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const token = jwt.sign(data, "secret_ecom");
+      res.json({ success: true, token });
+    }
+    // not correct then to show password is wrong
+    else {
+      res.status(400).json({
+        success: false,
+        errors: "Wrong Password",
+      });
+    }
+  }
+  // when this is not exist in our server then to show User not found
+  else {
+    res.status(400).json({
+      success: false,
+      errors: "User not found",
+    });
+  }
 });
 
 app.listen(PORT, (error) => {
