@@ -1,8 +1,20 @@
 import React from "react";
-import new_collection from "../Assets/new_collections";
+// import new_collection from "../Assets/new_collections";
 import Item from "../Item/Item";
+import { useState, useEffect } from "react";
 
 const NewCollection = () => {
+  const [new_collection, setNewCollection] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/newcollection")
+      .then((res) => res.json())
+      .then(
+        (data) => setNewCollection(data)
+        // console.log(data)
+      );
+  }, []);
+
   return (
     <div className="flex flex-col items-center gap-[10px] sm:my-14 my-16 h-full">
       <h1 className="flex flex-col items-center text-center text-[#171717] sm:text-[50px] text-[35px] font-semibold uppercase">

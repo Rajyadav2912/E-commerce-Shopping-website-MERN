@@ -1,9 +1,20 @@
-import React from "react";
-import data_Product from "../Assets/data";
+import React, { useEffect, useState } from "react";
+// import data_Product from "../Assets/data";
 import Item from "../Item/Item";
 import "./Popular.css";
 
 const Popular = () => {
+  const [popularProducts, setPopularProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/popularinwomen")
+      .then((res) => res.json())
+      .then(
+        (data) => setPopularProducts(data)
+        // console.log(data);
+      );
+  }, []);
+
   return (
     <div className="flex flex-col items-center sm:mx-0 mx-auto gap-[10px] h-full my-14">
       <h1 className=" flex flex-col items-center text-center text-[#171717] xl:text-[50px] sm:text-[50px] text-[35px] font-semibold uppercase">
@@ -11,7 +22,7 @@ const Popular = () => {
         <hr className="sm:w-[200px] w-[280px] sm:h-[6px] h-[4px] rounded-[10px] bg-[#252525] " />
       </h1>
       <div className="w-full h-full flex lg:flex-row flex-wrap items-center justify-center my-[30px] lg:gap-[30px] gap-[20px]">
-        {data_Product.map((item, index) => {
+        {popularProducts.map((item, index) => {
           return (
             <Item
               key={index}
