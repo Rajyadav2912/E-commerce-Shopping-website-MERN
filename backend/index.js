@@ -254,8 +254,8 @@ app.get("/popularinwomen", async (req, res) => {
 });
 
 // creating middleware to fetch user
-const fetchUser = async (req, res) => {
-  const token = req.header("auth.token");
+const fetchUser = async (req, res, next) => {
+  const token = req.header("auth-token");
 
   if (!token) {
     res
@@ -279,7 +279,8 @@ app.post("/addtocart", fetchUser, async (req, res) => {
   // let user = await Users.findOne({ email: req.body.email });
   // let product = await Product.findOne({ id: req.body.id });
 
-  // console.log(req.body, req.user);
+  console.log(req.body, req.user);
+
   let userData = await Users.findOne({ _id: req.user.id });
   userData.cartData[req.body.itemId] += 1;
   await Users.findOneAndUpdate(
@@ -287,6 +288,30 @@ app.post("/addtocart", fetchUser, async (req, res) => {
     { cartData: userData.cartData }
   );
   res.send("Added product");
+});
+
+app.post("/removeFromcart", fetchUser, async (req, res) => {
+  // let user = await Users.findOne({ email: req.body.email });
+  // let product = await Product.findOne({ id: req.body.id });
+
+  console.log(req.body, req.user);
+
+  let userData = await Users.findOne({ _id: req.user.id });
+  if (userData.cartData[req.body.itemId] > 0)
+    userData.cartData[req.body.itemId] -= 1;
+  await Users.findOneAndUpdate(
+    { _id: req.user.id },
+    { cartData: userData.cartData }
+  );
+  res.send("Removed product");
+});
+
+// creating endpoint to get cart data
+app.post("/getcart", fetchUser, async (req, res) => {
+  console.log("get cart");
+
+  let userData = await Users.findOne({ _id: req.user.id });
+  res.json(userData.cartData);
 });
 
 app.listen(PORT, (error) => {
