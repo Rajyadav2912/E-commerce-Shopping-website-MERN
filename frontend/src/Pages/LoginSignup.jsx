@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "./HelperURL";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
@@ -18,7 +19,7 @@ const LoginSignup = () => {
     console.log("Login Page", formData);
 
     let responseData;
-    await fetch("http://localhost:4000/login", {
+    await fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,7 +41,8 @@ const LoginSignup = () => {
   const SignUp = async () => {
     // console.log("Sign Up Page", formData);
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+
+    await fetch(`${BASE_URL}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",

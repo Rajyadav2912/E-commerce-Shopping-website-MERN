@@ -19,18 +19,15 @@ const Product = require("./Models/ProductModel");
 const Users = require("./Models/UserModel");
 const fetchUser = require("./Models/fetchUser");
 
-
-// import routes
-// const AllRoutes = require("./routes/ProductRoute");
-
-// app.use("/api/v1", AllRoutes);
-
 // DATABASE connetions with MongoDB
 const connect = require("./Config/database");
-
 connect();
 
 // API Creation
+
+app.get("/", (req, res) => {
+  res.send(`Express APP is Running PORT No. ${PORT} successfully`);
+});
 
 // Image storage Engine
 const storage = multer.diskStorage({
@@ -55,69 +52,47 @@ app.post("/upload", upload.single("product"), (req, res) => {
   });
 });
 
-// Schema for Creating a Product
-
 app.post("/addproduct", async (req, res) => {
-  try {
-    let products = await Product.find({});
-    let id;
+  let products = await Product.find({});
+  let id;
 
-    if (products.length > 0) {
-      let last_product_array = products.slice(-1);
-      let last_product = last_product_array[0];
-      id = last_product.id + 1;
-    } else {
-      id = 1;
-    }
-
-    const product = new Product({
-      id: id,
-      name: req.body.name,
-      image: req.body.image,
-      category: req.body.category,
-      new_price: req.body.new_price,
-      old_price: req.body.old_price,
-    });
-
-    console.log(product);
-    await product.save();
-
-    console.log("Saved");
-
-    res.json({
-      success: true,
-      name: req.body.name,
-      message: "Product saved successfully",
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      success: false,
-      error: error,
-      message: "Something went wrong",
-    });
+  if (products.length > 0) {
+    let last_product_array = products.slice(-1);
+    let last_product = last_product_array[0];
+    id = last_product.id + 1;
+  } else {
+    id = 1;
   }
+
+  const product = new Product({
+    id: id,
+    name: req.body.name,
+    image: req.body.image,
+    category: req.body.category,
+    new_price: req.body.new_price,
+    old_price: req.body.old_price,
+  });
+
+  console.log(product);
+  await product.save();
+
+  console.log("Saved");
+
+  res.json({
+    success: true,
+    name: req.body.name,
+  });
 });
 
 // Creating API For deleting products
 app.post("/removeproduct", async (req, res) => {
-  try {
-    await Product.findOneAndDelete({ id: req.body.id });
-    console.log("Removed product");
-    res.status(200).json({
-      success: true,
-      name: req.body.name,
-      id: req.body.id,
-      message: "Product removed successfully",
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      success: false,
-      error: error,
-      message: "Something went wrong",
-    });
-  }
+  await Product.findOneAndDelete({ id: req.body.id });
+  console.log("Removed product");
+  res.status(200).json({
+    success: true,
+    name: req.body.name,
+    id: req.body.id,
+  });
 });
 
 // Creating API For getting all products
@@ -126,8 +101,6 @@ app.get("/api/v1/allproducts", async (req, res) => {
   console.log("All Products Fetched Successfully", products);
   res.send(products);
 });
-
-// Schema Creation for User model
 
 // Creation Ending Point for regiteration the user
 app.post("/signup", async (req, res) => {
@@ -219,29 +192,11 @@ app.get("/popularinwomen", async (req, res) => {
   res.send(popularinwomen);
 });
 
-// creating middleware to fetch user
-// const fetchUser = async (req, res, next) => {
-//   const token = req.header("auth-token");
-
-//   if (!token) {
-//     res
-//       .status(401)
-//       .send({ errors: "Please authenticate using the valid token" });
-//   } else {
-//     try {
-//       const data = jwt.verify(token, "secret_ecom");
-//       req.user = data.user;
-//       next();
-//     } catch (error) {
-//       res
-//         .status(401)
-//         .send({ errors: "Please authenticate using the valid token" });
-//     }
-//   }
-// };
-
 // creating endpoint for adding product in cart data
 app.post("/addtocart", fetchUser, async (req, res) => {
+  // let user = await Users.findOne({ email: req.body.email });
+  // let product = await Product.findOne({ id: req.body.id });
+
   console.log(req.body, req.user);
 
   let userData = await Users.findOne({ _id: req.user.id });
@@ -254,6 +209,9 @@ app.post("/addtocart", fetchUser, async (req, res) => {
 });
 
 app.post("/removeFromcart", fetchUser, async (req, res) => {
+  // let user = await Users.findOne({ email: req.body.email });
+  // let product = await Product.findOne({ id: req.body.id });
+
   console.log(req.body, req.user);
 
   let userData = await Users.findOne({ _id: req.user.id });
@@ -272,10 +230,6 @@ app.post("/getcart", fetchUser, async (req, res) => {
 
   let userData = await Users.findOne({ _id: req.user.id });
   res.json(userData.cartData);
-});
-
-app.get("/", (req, res) => {
-  res.send(`Express APP is Running PORT No. ${PORT} successfully`);
 });
 
 app.listen(PORT, (error) => {
