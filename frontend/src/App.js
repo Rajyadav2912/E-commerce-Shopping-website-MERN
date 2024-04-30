@@ -18,7 +18,7 @@ const App = () => {
         <Navbar />
       </div>
       <Routes>
-        <Route path="/" element={<Shop />} />
+        <Route path="/" element={<Shop onclick={window.scrollTo(0, 0)} />} />
         <Route
           path="/mens"
           element={<ShopCategory banner={men_banner} category="men" />}

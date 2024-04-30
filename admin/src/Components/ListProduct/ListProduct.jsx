@@ -6,7 +6,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    let data = await fetch("http://localhost:4000/api/allproducts");
+    let data = await fetch("http://localhost:4000/api/v1/allproducts");
     let res = await data.json();
     console.log(res);
 
