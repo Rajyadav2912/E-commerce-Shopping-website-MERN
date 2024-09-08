@@ -1,13 +1,7 @@
 const Users = require("../Models/UserModel");
-const fetchUser = require("../Models/fetchUser");
 
-const RemoveFromCart = {
-  fetchUser: async (req, res) => {
-    // let user = await Users.findOne({ email: req.body.email });
-    // let product = await Product.findOne({ id: req.body.id });
-
-    console.log(req.body, req.user);
-
+const RemoveFromCart = async (req, res) => {
+  try {
     let userData = await Users.findOne({ _id: req.user.id });
     if (userData.cartData[req.body.itemId] > 0)
       userData.cartData[req.body.itemId] -= 1;
@@ -16,7 +10,10 @@ const RemoveFromCart = {
       { cartData: userData.cartData }
     );
     res.send("Removed product");
-  },
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error, while removing product from cart"); 
+  }
 };
 
 module.exports = RemoveFromCart;

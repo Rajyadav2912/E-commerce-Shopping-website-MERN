@@ -1,13 +1,8 @@
 const Users = require("../Models/UserModel");
-const fetchUser = require("../Models/fetchUser");
+// const fetchUser = require("../Models/fetchUser");
 
-const AddToCart = {
-  fetchUser: async (req, res) => {
-    // let user = await Users.findOne({ email: req.body.email });
-    // let product = await Product.findOne({ id: req.body.id });
-
-    console.log(req.body, req.user);
-
+const AddToCart = async (req, res) => {
+  try {
     let userData = await Users.findOne({ _id: req.user.id });
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate(
@@ -15,7 +10,10 @@ const AddToCart = {
       { cartData: userData.cartData }
     );
     res.send("Added product");
-  },
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error, while product add to cart");
+  }
 };
 
 module.exports = AddToCart;

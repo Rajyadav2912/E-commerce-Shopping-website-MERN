@@ -1,6 +1,6 @@
 const Product = require("../Models/ProductModel");
 
-exports.RemoveProduct = async (req, res) => {
+const RemoveProduct = async (req, res) => {
   try {
     await Product.findOneAndDelete({ id: req.body.id });
     console.log("Removed product");
@@ -19,3 +19,5 @@ exports.RemoveProduct = async (req, res) => {
     });
   }
 };
+
+module.exports = RemoveProduct;
