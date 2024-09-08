@@ -23,6 +23,7 @@ const Hero = () => {
               src={hand_icon}
               alt="icon"
               className="xl:w-[105px] w-[80px] "
+              loading="lazy"
             />
           </div>
           <p className="xl:text-[80px] sm:text-[60px] text-[70px] font-bold">
@@ -38,7 +39,8 @@ const Hero = () => {
         {/* hand lastest */}
         <div className="flex items-center xl:gap-4 gap-2 pl-7 xl:w-[255px] w-[250px] h-[60px] xl:mt-4 mt-5 rounded-[75px] bg-[#ff4141] text-[18px] text-white font-medium">
           <p>Latest Collection</p>
-          <img src={arrow_icon} alt="icon" />
+          <img src={arrow_icon} alt="icon" 
+          loading="lazy"/>
         </div>
       </div>
       <div className="flex-1 flex items-center justify-center">
@@ -46,6 +48,7 @@ const Hero = () => {
           src={hero_img}
           alt="hero-img"
           className="xl:w-[80%] lg:w-[90%] sm:w-[95%] w-0"
+          loading="lazy"
         />
       </div>
     </div>

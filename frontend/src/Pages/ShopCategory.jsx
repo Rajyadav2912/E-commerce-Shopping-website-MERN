@@ -14,7 +14,13 @@ const ShopCategory = ({ banner, category }) => {
           out of 36 products
         </p>
         <div className="flex items-center gap-2 mt-4 py-[10px] px-[20px] rounded-[40px] border border-[#888]">
-          Sort by <img src={dropdown_icon} alt="" className="w-[15px] h-2" />
+          Sort by{" "}
+          <img
+            src={dropdown_icon}
+            alt=""
+            className="w-[15px] h-2"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="my-[20px] h-full grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center md:gap-x-3 gap-x-5 gap-12">
@@ -25,7 +31,7 @@ const ShopCategory = ({ banner, category }) => {
                 key={index}
                 id={item.id}
                 name={item.name}
-                image={item.image}
+                image={item.imageURL}
                 new_price={item.new_price}
                 old_price={item.old_price}
               />

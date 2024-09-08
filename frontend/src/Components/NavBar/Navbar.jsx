@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className="navbar">
       <Link to="/">
         <div className="nav-logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" loading="lazy" />
           <p>SHOPPER</p>
         </div>
       </Link>

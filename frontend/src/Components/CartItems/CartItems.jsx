@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
+import { ToastContainer } from "react-toastify";
 
 const CartItems = () => {
   const { all_product, cartItems, removeFromCart, getTotalCartAmount } =
@@ -22,11 +23,13 @@ const CartItems = () => {
           return (
             <div>
               <div className="flex w-full lg:overflow-x-hidden overflow-x-scroll items-center lg:gap-16 md:gap-12 sm:gap-4 gap-2 py-5 text-[#454545] md:text-[17px] sm:text-[14px] text-[12px] font-medium">
+                <ToastContainer position="top-center" />
                 <div className="md:w-[8.5%] w-[10%]">
                   <img
-                    src={e.image}
+                    src={e.imageURL}
                     alt="img"
                     className="md:h-[62px] h-[65px]"
+                    loading="lazy"
                   />
                 </div>
                 <p className="w-[30%] ">{e.name}</p>
@@ -41,6 +44,7 @@ const CartItems = () => {
                     onClick={() => removeFromCart(e.id)}
                     alt="icon"
                     className="w-[15px] my-0 mx-10 cursor-pointer"
+                    loading="lazy"
                   />
                 </div>
               </div>

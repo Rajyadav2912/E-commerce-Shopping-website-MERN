@@ -2,40 +2,47 @@ import React, { useContext } from "react";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
+import { ToastContainer } from "react-toastify";
 
 const ProductDisplay = ({ product }) => {
   const { addToCart } = useContext(ShopContext);
 
   return (
     <div className="flex lg:flex-row flex-col my-0 xl:mx-[170px] lg:mx-[70px] md:mx-[100px] mx-[70px] gap-8">
+      <ToastContainer position="top-center" />
       <div className="flex sm:flex-row flex-col-reverse gap-[17px]">
         <div className="flex justify-between sm:flex-col flex-row sm:gap-4 gap-2">
           <img
-            src={product.image}
+            src={product.imageURL}
             alt="img"
             className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+            loading="lazy"
           />
           <img
-            src={product.image}
+            src={product.imageURL}
             alt="img"
             className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+            loading="lazy"
           />
           <img
-            src={product.image}
+            src={product.imageURL}
             alt="img"
             className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+            loading="lazy"
           />
           <img
-            src={product.image}
+            src={product.imageURL}
             alt="img"
             className="lg:w-[200px] sm:w-[170px] w-[60px] lg:h-[163px] h-[147.5px]"
+            loading="lazy"
           />
         </div>
         <div>
           <img
-            src={product.image}
+            src={product.imageURL}
             alt="img"
             className="lg:w-[850px] w-[800px] lg:h-[700px] h-[640px]"
+            loading="lazy"
           />
         </div>
       </div>

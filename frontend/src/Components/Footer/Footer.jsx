@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-10">
       <div className="flex items-center gap-5">
-        <img src={footer_logo} alt="img" />
+        <img src={footer_logo} alt="img" loading="lazy" />
         <p className="text-[#383838]  text-[46px] font-bold">SHOPPER</p>
       </div>
 
@@ -33,15 +33,15 @@ const Footer = () => {
 
       <div className="flex gap-5">
         <div className="p-3 pb-2 bg-[#fbfbfb] border border-[#c7c6c6]">
-          <img src={instagram_icon} alt="icon" />
+          <img src={instagram_icon} alt="icon" loading="lazy" />
         </div>
 
         <div className="p-3 pb-2 bg-[#fbfbfb] border border-[#c7c6c6]">
-          <img src={pintester_icon} alt="icon" />
+          <img src={pintester_icon} alt="icon" loading="lazy" />
         </div>
 
         <div className="p-3 pb-2 bg-[#fbfbfb] border border-[#c7c6c6]">
-          <img src={whatsapp_icon} alt="icon" />
+          <img src={whatsapp_icon} alt="icon" loading="lazy" />
         </div>
       </div>
 

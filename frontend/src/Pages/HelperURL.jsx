@@ -1,3 +1,1 @@
-export const BASE_URL = "http://localhost:4000";
-
-// export const BASE_URL = "https://e-commerce-api-vcom.onrender.com";
+export const BASE_URL = "https://backend-e-commerce-shopping.vercel.app/api/v1";

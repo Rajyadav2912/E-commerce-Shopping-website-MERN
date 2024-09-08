@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 // import all_product from "../Components/Assets/all_product";
 import { useEffect } from "react";
 import { BASE_URL } from "../Pages/HelperURL";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ShopContext = createContext(null);
 
@@ -18,7 +20,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/v1/allproducts`)
+    fetch(`${BASE_URL}/allproducts`)
       .then((res) => res.json())
       .then((data) => setAll_Product(data));
 
@@ -51,6 +53,7 @@ const ShopContextProvider = (props) => {
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
+        toast.success("Product add to cart successfully")
     }
   };
 
@@ -69,6 +72,7 @@ const ShopContextProvider = (props) => {
       })
         .then((res) => res.json())
         .then((data) => console.log(data));
+        toast.success("Product remove successfully");
     }
   };
 

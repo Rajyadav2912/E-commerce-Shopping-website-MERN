@@ -29,7 +29,7 @@ const Popular = () => {
               key={index}
               id={item.id}
               name={item.name}
-              image={item.image}
+              image={item.imageURL}
               new_price={item.new_price}
               old_price={item.old_price}
             />

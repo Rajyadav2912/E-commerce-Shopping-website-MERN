@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "./HelperURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
@@ -18,23 +20,28 @@ const LoginSignup = () => {
   const Login = async () => {
     console.log("Login Page", formData);
 
-    let responseData;
-    await fetch(`${BASE_URL}/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => (responseData = data));
+    if (!formData.username || !formData.password) {
+      let responseData;
+      await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => res.json())
+        .then((data) => (responseData = data));
 
-    if (responseData.success) {
-      localStorage.setItem("auth-token", responseData.token);
-      window.location.replace("/");
-    } else {
-      alert(responseData.errors);
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        window.location.replace("/");
+      } else {
+        toast.warning("Wrong Password, Please try again!");
+      }
+    }
+    else {
+      toast.warning("All fields are required");
     }
   };
 
@@ -64,6 +71,7 @@ const LoginSignup = () => {
   return (
     <div className="w-full h-screen bg-[#fce3fe] xl:pt-[150px] pt-[160px]">
       <div className="lg:w-[580px] md:w-[520px] sm:w-[450px] w-[350px] max-h-[550px] bg-white m-auto py-[40px] lg:px-[60px] md:px-[50px] sm:px-[40px] px-[30px] rounded-3xl">
+        <ToastContainer position="top-center"/>
         <h1 className="text-center text-[30px] font-semibold">{state}</h1>
         <div className="flex flex-col gap-[29px] mt-[30px]">
           {state === "Login" ? (
@@ -76,6 +84,7 @@ const LoginSignup = () => {
               onChange={ChangeHandler}
               placeholder="Name"
               className="h-[40px] shadow-inner shadow-neutral-400 rounded-xl w-full pl-5 border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]"
+              required
             />
           )}
           <input
@@ -85,6 +94,7 @@ const LoginSignup = () => {
             onChange={ChangeHandler}
             placeholder="Email"
             className="h-[40px] w-full pl-5 shadow-inner shadow-neutral-400 rounded-xl border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]"
+            required
           />
           <input
             type="password"
@@ -93,6 +103,7 @@ const LoginSignup = () => {
             onChange={ChangeHandler}
             placeholder="Password"
             className="h-[40px] w-full pl-5 shadow-inner shadow-neutral-400 rounded-xl border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]"
+            required
           />
           {/* <input type="password" placeholder="<PASSWORD>" /> */}
         </div>
@@ -111,7 +122,6 @@ const LoginSignup = () => {
             Continue
           </button>
         )}
-
         {state === "Sign up" ? (
           <p className="mt-[15px] text-[#5c5c5c] text-[16px] font-medium">
             Already have an account?
@@ -139,7 +149,7 @@ const LoginSignup = () => {
         )}
         {state === "Sign up" ? (
           <div className="flex items-center mt-[10px] gap-[5px] text-[#5c5c5c] text-[14px] font-medium">
-            <input type="checkbox" name="" id="" />
+            <input type="checkbox" name="" id="" required />
             <p>By continuing, I agree to the terms of use & privacy policy.</p>
           </div>
         ) : (

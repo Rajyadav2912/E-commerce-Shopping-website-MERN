@@ -23,6 +23,7 @@ const Offers = () => {
           src={exclusive_img}
           alt="img"
           className="xl:w-[320px] h-full lg:w-[370px] md:w-[400px] sm:w-0 w-0"
+          loading="lazy"
         />
       </div>
     </div>

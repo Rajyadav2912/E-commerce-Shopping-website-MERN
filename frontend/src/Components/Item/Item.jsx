@@ -9,6 +9,7 @@ const Item = ({ id, image, name, new_price, old_price }) => {
           onClick={window.scrollTo(0, 0)}
           src={image}
           alt="img"
+          loading="lazy"
           className="xl:w-[270px] lg:w-[270px] md:w-[250px] sm:w-[290px] w-[280px] rounded-3xl hover:shadow-2xl"
         />
       </Link>
