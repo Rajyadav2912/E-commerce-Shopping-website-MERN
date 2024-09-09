@@ -9,7 +9,7 @@ const SignUp = async (req, res) => {
     if (check) {
       return res.status(400).json({
         success: false,
-        errors: "existing user found with same email address",
+        errors: "User is already exist with same email address",
       });
     }
 

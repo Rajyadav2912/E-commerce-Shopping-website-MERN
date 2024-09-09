@@ -36,14 +36,15 @@ const LoginSignup = () => {
         .then((res) => res.json())
         .then((data) => (responseData = data));
 
-      toast.success("Logged in successfully!");
-
-      setTimeout(() => {
-        if (responseData.success) {
-          localStorage.setItem("auth-token", responseData.token);
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        setTimeout(() => {
           window.location.replace("/");
-        }
-      }, 2000);
+        }, 2000);
+        toast.success("Logged in successfully!");
+      } else {
+        toast.error("Invalid email or password");
+      }
     }
   };
 
@@ -70,15 +71,15 @@ const LoginSignup = () => {
         .then((res) => res.json())
         .then((data) => (responseData = data));
 
-      setTimeout(() => {
-        if (responseData.success) {
-          localStorage.setItem("auth-token", responseData.token);
+      if (responseData.success) {
+        localStorage.setItem("auth-token", responseData.token);
+        setTimeout(() => {
           window.location.replace("/");
-        } else {
-          toast.error(responseData.errors);
-        }
-      }, 2000);
-      toast.success("Signup successfully!");
+        }, 2000);
+        toast.success("Signup successfully!");
+      } else {
+        toast.error(responseData.errors);
+      }
     }
   };
 
