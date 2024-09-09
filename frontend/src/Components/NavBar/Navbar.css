@@ -62,23 +62,14 @@
   position: relative;
 }
 
-.nav-login-cart button {
-  width: 115px;
-  height: 42px;
-  font-size: 18px;
-  border: 1px solid #7a7a7a;
-  border-radius: 75px;
-  font-weight: 500;
-}
-
 .nav-login-cart img {
-  width: 32px;
+  width: 60px;
 }
 
 .nav-login-cart span {
   position: absolute;
   text-align: center;
-  left: 11.5rem;
+  left: 10.3rem;
   top: -1px;
   width: 18px;
   height: 19px;
@@ -108,15 +99,13 @@
     font-size: 16px;
   }
   .nav-login-cart {
-    gap: 35px;
-  }
-  .nav-login-cart button {
-    width: 125px;
-    height: 45px;
-    font-size: 20px;
+    gap: 30px;
   }
   .nav-login-cart img {
-    width: 35px;
+    width: 52px;
+  }
+  .nav-login-cart span {
+    left: 8.8rem;
   }
 }
 
@@ -128,17 +117,10 @@
     gap: 25px;
     font-size: 14px;
   }
-  .nav-login-cart button {
-    width: 80px;
-    height: 35px;
-    font-size: 14px;
-  }
   .nav-logo img {
     width: 30px;
   }
   .nav-login-cart span {
-    width: 18px;
-    height: 18px;
     left: 8.8rem;
     top: 0;
   }
@@ -146,7 +128,7 @@
 
 @media (max-width: 800px) {
   .navbar {
-    padding: 12px 0px;
+    padding: 12px 20px;
   }
   .menu-icon {
     display: block;
@@ -176,7 +158,7 @@
 
 @media (max-width: 500px) {
   .navbar {
-    padding: 8px 0px;
+    padding: 8px 5px;
     gap: 0;
   }
   .nav-logo {

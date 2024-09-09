@@ -48,7 +48,7 @@ const Navbar = () => {
         {localStorage.getItem("auth-token") ? (
           <>
             <button
-              className="text-[12px]"
+              className="w-full h-[42px] px-2 rounded-[75px] border border-[#343333] hover:bg-[#c4c4c4] transition-all ease-linear hover:scale-[1.1] font-medium text-[15px]"
               onClick={() => {
                 localStorage.removeItem("auth-token");
                 window.location.replace("/");
@@ -64,7 +64,9 @@ const Navbar = () => {
           </>
         ) : (
           <Link to="/login">
-            <button>Login</button>
+            <button className="w-full h-[42px] px-4 rounded-[75px] border border-[#343333] hover:bg-[#c4c4c4] transition-all ease-linear hover:scale-[1.1] font-medium text-[15px]">
+              Login/Register
+            </button>
           </Link>
         )}
       </div>

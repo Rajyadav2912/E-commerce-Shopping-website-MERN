@@ -17,10 +17,13 @@ const LoginSignup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Login Function for User Account
   const Login = async () => {
     console.log("Login Page", formData);
 
-    if (!formData.username || !formData.password) {
+    if (formData.email === "" || formData.password === "") {
+      toast.warning("All fields are required");
+    } else {
       let responseData;
       await fetch(`${BASE_URL}/login`, {
         method: "POST",
@@ -33,45 +36,56 @@ const LoginSignup = () => {
         .then((res) => res.json())
         .then((data) => (responseData = data));
 
-      if (responseData.success) {
-        localStorage.setItem("auth-token", responseData.token);
-        window.location.replace("/");
-      } else {
-        toast.warning("Wrong Password, Please try again!");
-      }
-    }
-    else {
-      toast.warning("All fields are required");
+      toast.success("Logged in successfully!");
+
+      setTimeout(() => {
+        if (responseData.success) {
+          localStorage.setItem("auth-token", responseData.token);
+          window.location.replace("/");
+        }
+      }, 2000);
     }
   };
 
+  // Signup Function for User Account
   const SignUp = async () => {
     // console.log("Sign Up Page", formData);
-    let responseData;
-
-    await fetch(`${BASE_URL}/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => (responseData = data));
-
-    if (responseData.success) {
-      localStorage.setItem("auth-token", responseData.token);
-      window.location.replace("/");
+    if (
+      formData.username === "" ||
+      formData.email === "" ||
+      formData.password === ""
+    ) {
+      toast.warning("All fields are required");
     } else {
-      alert(responseData.errors);
+      let responseData;
+
+      await fetch(`${BASE_URL}/signup`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => res.json())
+        .then((data) => (responseData = data));
+
+      setTimeout(() => {
+        if (responseData.success) {
+          localStorage.setItem("auth-token", responseData.token);
+          window.location.replace("/");
+        } else {
+          toast.error(responseData.errors);
+        }
+      }, 2000);
+      toast.success("Signup successfully!");
     }
   };
 
   return (
     <div className="w-full h-screen bg-[#fce3fe] xl:pt-[150px] pt-[160px]">
       <div className="lg:w-[580px] md:w-[520px] sm:w-[450px] w-[350px] max-h-[550px] bg-white m-auto py-[40px] lg:px-[60px] md:px-[50px] sm:px-[40px] px-[30px] rounded-3xl">
-        <ToastContainer position="top-center"/>
+        <ToastContainer position="top-center" />
         <h1 className="text-center text-[30px] font-semibold">{state}</h1>
         <div className="flex flex-col gap-[29px] mt-[30px]">
           {state === "Login" ? (
