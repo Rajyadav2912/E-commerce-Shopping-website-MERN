@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import upload_area from "../Assets/Admin Panel Assets/upload_area.svg";
+import { BASE_URL } from "../../Pages/HelperURL";
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
@@ -24,41 +25,85 @@ const AddProduct = () => {
     let responseData;
     let product = productDetails;
 
-    let formData = new FormData();
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("name", productDetails.name);
+    formData.append("category", productDetails.category);
+    formData.append("new_price", productDetails.new_price);
+    formData.append("old_price", productDetails.old_price);
 
-    formData.append("product", image);
+    console.log(formData);
 
-    await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        responseData = data;
+    try {
+      const response = await fetch(`${BASE_URL}/addproduct`, {
+        method: "POST",
+        body: formData,
       });
 
-    if (responseData.success) {
-      product.image = responseData.image;
-      console.log(product);
+      const data = await response.json();
 
-      await fetch("http://localhost:4000/addproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((res) => res.json())
-        .then((data) =>
-          data.success
-            ? alert("Product added successfully")
-            : alert("Product not added successfully")
-        );
+      if (data.success) {
+        alert("Product added successfully");
+      } else {
+        alert("Product not added successfully");
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("An error occurred while adding the product.");
     }
+
+    // let formData = new FormData();
+
+    // formData.append("product", image);
+    // console.log(formData);
+
+    // product.imageURL = image;
+
+    // await fetch("http://localhost:7000/api/v1/addproduct", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    //   body: product,
+    // }).then((res) => res.json())
+    //     .then((data) =>
+    //       data.success
+    //         ? alert("Product added successfully")
+    //         : alert("Product not added successfully")
+    //     );
+    // toast.success("Product added successfully");
+
+    // await fetch("http://localhost:4000/upload", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     responseData = data;
+    //   });
+
+    // if (responseData.success) {
+    //   product.image = responseData.image;
+    //   console.log(product);
+
+    //   await fetch("http://localhost:4000/addproduct", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(product),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) =>
+    //       data.success
+    //         ? alert("Product added successfully")
+    //         : alert("Product not added successfully")
+    //     );
+    // }
   };
 
   return (
@@ -116,6 +161,7 @@ const AddProduct = () => {
           <img
             src={image ? URL.createObjectURL(image) : upload_area}
             alt="img"
+            loading="lazy"
             className="h-[120px] w-[90px] rounded-lg object-contain my-3 mx-0"
           />
         </label>

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import cross_icon from "../Assets/Admin Panel Assets/cross_icon.png";
 import "../ListProduct/ListProduct.css";
+import { BASE_URL } from "../../Pages/HelperURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    let data = await fetch("http://localhost:4000/api/v1/allproducts");
+    let data = await fetch(`${BASE_URL}/allproducts`);
     let res = await data.json();
     console.log(res);
 
@@ -25,8 +28,8 @@ const ListProduct = () => {
     fetchInfo();
   }, []);
 
-  const remonve_Products = async (id) => {
-    await fetch("http://localhost:4000/removeproduct", {
+  const remove_Products = async (id) => {
+    await fetch(`${BASE_URL}/removeproduct`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -35,11 +38,13 @@ const ListProduct = () => {
       body: JSON.stringify({ id: id }),
     });
     await fetchInfo();
+    toast.success("Product removed successfully!");
   };
 
   return (
     <div className="list-product">
       <h1 className="text-[30px] font-semibold">All Product List</h1>
+      <ToastContainer position="bottom-right" theme="dark" />
       <div className="listProduct-format-main">
         <p>Product</p>
         <p>Title</p>
@@ -54,13 +59,14 @@ const ListProduct = () => {
           return (
             <>
               <div
-                key={index}
+                key={product.id}
                 className="listProduct-format-main listproduct-formate"
               >
                 <img
-                  src={product.image}
+                  src={product.imageURL}
                   alt="img"
                   className="listProduct-icon"
+                  loading="lazy"
                 />
                 {/* <p>{product.id}</p> */}
                 <p>{product.name}</p>
@@ -70,8 +76,9 @@ const ListProduct = () => {
                 <img
                   src={cross_icon}
                   alt="img"
+                  loading="lazy"
                   className="listProduct-remove-icon"
-                  onClick={() => remonve_Products(product.id)}
+                  onClick={() => remove_Products(product.id)}
                 />
               </div>
               <hr />
